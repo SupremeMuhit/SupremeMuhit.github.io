@@ -134,18 +134,44 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Brand Colors on Hover */
-.social-item:hover .fa-twitter { color: #1DA1F2; }
-.social-item:hover .fa-discord { color: #5865F2; }
-.social-item:hover .fa-youtube { color: #FF0000; }
-.social-item:hover .fa-facebook { color: #1877F2; }
-.social-item:hover .fa-github { color: #333; }
-.social-item:hover .fa-instagram { color: #E4405F; }
-.social-item:hover .fa-tiktok { color: #000000; }
-.social-item:hover .fa-twitch { color: #9146FF; }
-.social-item:hover .fa-linkedin { color: #0077B5; }
-.social-item:hover .fa-reddit { color: #FF4500; }
-.social-item:hover .fa-telegram { color: #26A5E4; }
+/* Brand Colors (Default) */
+.fa-twitter, .fa-x-twitter { color: #000000; }
+.fa-discord { color: #5865F2; }
+.fa-youtube { color: #FF0000; }
+.fa-facebook { color: #1877F2; }
+.fa-github { color: #181717; }
+.fa-instagram { color: #E4405F; }
+.fa-tiktok { color: #000000; }
+.fa-twitch { color: #9146FF; }
+.social-item:hover .fa-linkedin { color: #0077B5; } /* Still neutral if needed, but let's just make them all colored */
+.fa-linkedin { color: #0077B5; }
+.fa-reddit { color: #FF4500; }
+.fa-telegram { color: #26A5E4; }
+.fa-spotify { color: #1DB954; }
+.fa-xbox { color: #107C10; }
+.fa-mastodon { color: #6364FF; }
+
+/* Icon Box Hover Scale */
+.social-item:hover .icon-box {
+  transform: scale(1.1);
+}
+
+.social-item:hover .icon-box i {
+  /* Keep color on hover, maybe add subtle glow */
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.1));
+}
+
+/* Image-based Icon Styling (Simple Icons) */
+.icon-box img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.social-item:hover .icon-box img {
+  transform: scale(1.1);
+}
 
 /* Text Content */
 .text-content {
