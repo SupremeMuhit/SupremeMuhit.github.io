@@ -1,193 +1,264 @@
-/* Basic reset */
+/* --- CSS Variables --- */
+:root {
+    --bg-color: #09090b; 
+    --card-bg: #18181b; 
+    --card-hover: #27272a;
+    --border-color: rgba(255, 255, 255, 0.1);
+    
+    --text-primary: #fafafa;
+    --text-secondary: #a1a1aa;
+    
+    --accent-blue: #3b82f6;
+    --accent-cyan: #06b6d4;
+    --accent-magenta: #d946ef;
+    
+    --border-radius-lg: 20px;
+    --border-radius-md: 16px;
+    
+    --transition-smooth: all 0.25s ease;
+}
+
+/* --- Base Reset --- */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: url('https://i.imgur.com/qcSHrWT.jpeg') no-repeat center center fixed;
-  background-size: cover;
-  padding: 40px 20px;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 40px 40px;
+    background-image: radial-gradient(circle at top right, rgba(59, 130, 246, 0.05), transparent 40%),
+                      radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.05), transparent 40%);
 }
 
-/* Card Container with Glassmorphism */
-.card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  width: 100%;
-  max-width: 400px;
-  border-radius: 25px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-  overflow: hidden;
-  text-align: center;
-  padding: 40px 25px; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
+.page-container {
+    width: 100%;
+    max-width: 1000px; /* Constrains the width nicely like the picture */
+    display: flex;
+    flex-direction: column;
+    gap: 80px; /* Space between sections */
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+/* --- Hero Section --- */
+.hero-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    animation: fadeInDown 1s ease forwards;
 }
 
-/* Image Section */
-.card-image {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  flex-shrink: 0;
+.hero-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.card-image img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 5px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+.badge {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Content Section */
-.card-content {
-  overflow-y: auto;
-  padding-right: 5px;
+.title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -1px;
+    color: var(--text-primary);
 }
 
-/* Custom Scrollbar for Card Content */
-.card-content::-webkit-scrollbar {
-  width: 6px;
-}
-.card-content::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-}
-.card-content::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-}
-.card-content::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.2);
+.bio {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 600px;
+    font-family: monospace; /* For that text block from the sketch */
 }
 
-.name {
-  font-size: 26px;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 10px;
+.hero-image-container {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.description {
-  font-size: 15px;
-  color: #444;
-  line-height: 1.6;
-  margin-bottom: 30px;
+.hero-image {
+    width: clamp(150px, 20vw, 250px);
+    height: clamp(150px, 20vw, 250px);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--border-color); /* Strict circle boundary from sketch */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: var(--card-bg);
 }
 
-/* Social List */
-.social-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.social-item {
-  display: flex;
-  align-items: center;
-  padding: 12px 15px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 15px;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+/* --- Sections --- */
+.content-section {
+    width: 100%;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
 }
 
-.social-item:hover {
-  background: #ffffff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  transform: scale(1.02);
-  border-color: #ffffff;
+.section-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Icon Box */
-.icon-box {
-  width: 50px;
-  height: 50px;
-  background: #fff;
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  color: #333;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  margin-right: 20px;
-  transition: all 0.3s ease;
+/* --- 3-Column Grid Layout --- */
+.grid-3-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
 }
 
-/* Brand Colors (Default) */
-.fa-twitter, .fa-x-twitter { color: #000000; }
-.fa-discord { color: #5865F2; }
-.fa-youtube { color: #FF0000; }
-.fa-facebook { color: #1877F2; }
-.fa-github { color: #181717; }
-.fa-instagram { color: #E4405F; }
-.fa-tiktok { color: #000000; }
-.fa-twitch { color: #9146FF; }
-.social-item:hover .fa-linkedin { color: #0077B5; } /* Still neutral if needed, but let's just make them all colored */
-.fa-linkedin { color: #0077B5; }
-.fa-reddit { color: #FF4500; }
-.fa-telegram { color: #26A5E4; }
-.fa-spotify { color: #1DB954; }
-.fa-xbox { color: #107C10; }
-.fa-mastodon { color: #6364FF; }
-
-/* Icon Box Hover Scale */
-.social-item:hover .icon-box {
-  transform: scale(1.1);
+/* --- Box Cards (Pills) --- */
+.box-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 20px 25px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
-.social-item:hover .icon-box i {
-  /* Keep color on hover, maybe add subtle glow */
-  filter: drop-shadow(0 0 5px rgba(0,0,0,0.1));
+/* Base box header (used mainly by socials to center content) */
+.box-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
 }
 
-/* Image-based Icon Styling (Simple Icons) */
-.icon-box img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
+/* Special alignment for cards with text/descriptions */
+.project-card {
+    align-items: flex-start;
+    gap: 15px;
 }
 
-.social-item:hover .icon-box img {
-  transform: scale(1.1);
+.box-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-/* Text Content */
-.text-content {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
+.box-icon {
+    font-size: 1.8rem;
+    color: var(--text-secondary);
+    transition: var(--transition-smooth);
+    flex-shrink: 0;
 }
 
-.username {
-  font-size: 17px;
-  font-weight: 600;
-  color: #222;
+.box-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: var(--transition-smooth);
 }
 
-.small-desc {
-  font-size: 13px;
-  color: #666;
-  margin-top: 2px;
+.box-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Colors for specific icons if needed without hover */
+.icon-cyan { color: var(--accent-cyan); }
+.icon-blue { color: var(--accent-blue); }
+.icon-magenta { color: var(--accent-magenta); }
+
+/* Hover Effects */
+.box-card:hover {
+    background-color: var(--card-hover);
+    transform: translateY(-4px);
+    border-color: var(--hover-color, var(--text-primary)); /* Uses inline var or defaults to white */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.box-card:hover .box-icon {
+    color: var(--hover-color, var(--text-primary));
+}
+
+.box-card:hover .box-title {
+    color: var(--text-primary);
+}
+
+/* --- Footer --- */
+footer {
+    margin-top: auto;
+    padding-top: 60px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* --- Animations --- */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive Layouts --- */
+@media (max-width: 900px) {
+    .grid-3-col {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-section {
+        flex-direction: column-reverse; /* Usually text below image on mobile, or keep as is */
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .badge {
+        align-self: center;
+    }
+    
+    .bio {
+        margin: 0 auto;
+    }
+
+    .grid-3-col {
+        grid-template-columns: 1fr;
+    }
 }
