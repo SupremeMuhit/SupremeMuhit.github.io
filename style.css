@@ -1,11 +1,11 @@
 /* --- CSS Variables --- */
 :root {
-    --bg-color: #09090b; 
-    --card-bg: #18181b; 
-    --card-hover: #27272a;
-    --border-color: rgba(255, 255, 255, 0.1);
+    --bg-color: #030303; /* Deepened for Neons */
+    --card-bg: rgba(20, 20, 24, 0.7); /* More transparent for glass effect */
+    --card-hover: rgba(30, 30, 36, 0.9);
+    --border-color: rgba(255, 255, 255, 0.08);
     
-    --text-primary: #fafafa;
+    --text-primary: #ffffff;
     --text-secondary: #a1a1aa;
     
     --accent-blue: #3b82f6;
@@ -15,7 +15,7 @@
     --border-radius-lg: 20px;
     --border-radius-md: 16px;
     
-    --transition-smooth: all 0.25s ease;
+    --transition-smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncier modern transition */
 }
 
 /* --- Base Reset --- */
@@ -34,8 +34,17 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 60px 40px 40px;
-    background-image: radial-gradient(circle at top right, rgba(59, 130, 246, 0.05), transparent 40%),
-                      radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.05), transparent 40%);
+    overflow-x: hidden;
+}
+
+#neon-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Place behind all content */
+    pointer-events: none; /* Let clicks pass through */
 }
 
 .page-container {
@@ -83,6 +92,7 @@ body {
     line-height: 1;
     letter-spacing: -1px;
     color: var(--text-primary);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3); /* Subtle glow on main title */
 }
 
 .bio {
@@ -105,9 +115,16 @@ body {
     height: clamp(150px, 20vw, 250px);
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid var(--border-color); /* Strict circle boundary from sketch */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 2px solid var(--border-color); 
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.1); /* Subtle white glow */
     background: var(--card-bg);
+    transition: var(--transition-smooth);
+}
+
+.hero-image:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 60px rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
 }
 
 .hero-image img {
@@ -159,6 +176,10 @@ body {
     display: flex;
     align-items: center;
     cursor: pointer;
+    backdrop-filter: blur(12px); /* Glassmorphism over the canvas */
+    -webkit-backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
 }
 
 /* Base box header (used mainly by socials to center content) */
@@ -209,17 +230,22 @@ body {
 /* Hover Effects */
 .box-card:hover {
     background-color: var(--card-hover);
-    transform: translateY(-4px);
-    border-color: var(--hover-color, var(--text-primary)); /* Uses inline var or defaults to white */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--hover-color, rgba(255,255,255,0.8)); 
+    box-shadow: 0 0 25px var(--hover-color, rgba(255,255,255,0.4)), 
+                inset 0 0 15px rgba(255,255,255,0.05); /* Outer neon glow + inner subtle highlight */
+    z-index: 10; /* Bring hovered card above others */
 }
 
 .box-card:hover .box-icon {
     color: var(--hover-color, var(--text-primary));
+    text-shadow: 0 0 15px var(--hover-color, var(--text-primary)); /* Neonic icon glow */
+    transform: scale(1.1);
 }
 
 .box-card:hover .box-title {
     color: var(--text-primary);
+    text-shadow: 0 0 8px rgba(255,255,255,0.5);
 }
 
 /* --- Footer --- */
@@ -233,13 +259,29 @@ footer {
 
 /* --- Animations --- */
 @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
+    from { opacity: 0; transform: translateY(-30px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Stagger cascade effect for cards */
+.grid-3-col a:nth-child(1), .grid-3-col div:nth-child(1) { animation-delay: 0.1s; }
+.grid-3-col a:nth-child(2), .grid-3-col div:nth-child(2) { animation-delay: 0.15s; }
+.grid-3-col a:nth-child(3), .grid-3-col div:nth-child(3) { animation-delay: 0.2s; }
+.grid-3-col a:nth-child(4), .grid-3-col div:nth-child(4) { animation-delay: 0.25s; }
+.grid-3-col a:nth-child(5), .grid-3-col div:nth-child(5) { animation-delay: 0.3s; }
+.grid-3-col a:nth-child(6), .grid-3-col div:nth-child(6) { animation-delay: 0.35s; }
+.grid-3-col a:nth-child(7), .grid-3-col div:nth-child(7) { animation-delay: 0.4s; }
+.grid-3-col a:nth-child(8), .grid-3-col div:nth-child(8) { animation-delay: 0.45s; }
+.grid-3-col a:nth-child(9), .grid-3-col div:nth-child(9) { animation-delay: 0.5s; }
+
+.box-card {
+    animation: fadeInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0;
 }
 
 /* --- Responsive Layouts --- */
