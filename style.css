@@ -69,7 +69,13 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
+}
+
+.hero-badges {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .badge {
@@ -84,6 +90,21 @@ body {
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition: var(--transition-smooth);
+}
+
+.clickable-badge {
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: none;
+}
+
+.clickable-badge:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.3);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
 }
 
 .title {
@@ -101,6 +122,21 @@ body {
     color: var(--text-secondary);
     max-width: 600px;
     font-family: monospace; /* For that text block from the sketch */
+}
+
+.bio a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    border-bottom: 1px solid transparent;
+    font-family: inherit;
+    font-weight: inherit;
+}
+
+.bio a:hover {
+    color: var(--accent-cyan);
+    border-bottom-color: var(--accent-cyan);
+    text-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
 }
 
 .hero-image-container {
@@ -226,6 +262,47 @@ body {
 .icon-cyan { color: var(--accent-cyan); }
 .icon-blue { color: var(--accent-blue); }
 .icon-magenta { color: var(--accent-magenta); }
+
+/* --- Split Cards (Used in Support) --- */
+.split-card {
+    padding: 0 !important;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.split-main {
+    flex: 1;
+    padding: 20px 25px;
+    text-decoration: none;
+    color: var(--text-primary);
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    transition: var(--transition-smooth);
+}
+
+.split-side {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-secondary);
+    border-left: 1px solid var(--border-color);
+    transition: var(--transition-smooth);
+    font-size: 1.4rem;
+}
+
+.split-main:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.split-side:hover {
+    background: #5865F2; /* Discord color */
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
 
 /* Hover Effects */
 .box-card:hover {
