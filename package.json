@@ -1,0 +1,16 @@
+{
+  "name": "suprememuhit-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsx src/build.ts",
+    "dev": "concurrently \"tsx watch src/build.ts\" \"serve dist -l 3000\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "serve": "^14.2.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
