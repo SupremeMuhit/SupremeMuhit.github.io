@@ -112,4 +112,11 @@ export const socials: Social[] = [
     icon: "fa-brands fa-mastodon",
     description: "Mashtadone profile",
   },
+  {
+    title: "Threads",
+    handle: "suprememuhit",
+    link: "https://www.threads.com/@suprememuhit",
+    icon: "fa-brands fa-threads",
+    description: "Meta X Profile",
+  }
 ];

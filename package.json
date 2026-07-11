@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "build": "tsx src/build.ts",
-    "dev": "concurrently \"tsx watch src/build.ts\" \"serve dist -l 3000\""
+    "dev": "concurrently \"tsx watch src/build.ts\" \"http-server dist -p 1320 -c-1 -o\""
   },
   "devDependencies": {
     "concurrently": "^9.1.0",
-    "serve": "^14.2.0",
+    "http-server": "^14.1.1",
     "tsx": "^4.19.0",
     "typescript": "^5.7.0"
   }
