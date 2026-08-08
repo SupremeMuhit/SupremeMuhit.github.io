@@ -142,7 +142,7 @@ const html = `<!doctype html>
           <h1 aria-label="Supreme Muhit">𝖘𝖚𝖕𝖗𝖊𝖒𝖊𝖒𝖚𝖍𝖎𝖙</h1>
           <p class="masthead-role">Pirate &amp; Tinkerer</p>
 <p class="masthead-bio">
-            Hey, I'm Supreme Muhit (also known as Mottamim Abdul Muhit, the
+            Hey, I'm Supreme Muhit (AKA The
             Supreme) &mdash; an Internet pirate by passion. I'm skilled at
             finding anything online and know my way around the web better than
             most. An active social media user across platforms, and when I'm
