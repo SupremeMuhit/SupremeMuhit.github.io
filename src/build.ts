@@ -83,18 +83,54 @@ function renderSupportItem(s: (typeof support)[number]) {
         </div>`;
 }
 
+const siteUrl = "https://suprememuhit.github.io/";
+
+const structuredData = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Supreme Muhit",
+  "alternateName": ["SupremeMuhit", "The Supreme", "Mottamim Abdul Muhit"],
+  "url": siteUrl,
+  "image": "https://i.imgur.com/e4GxPXm.png",
+  "description": "Supreme Muhit is an online pirate and active internet user from Bangladesh. He loves piracy, social media and tinkering. His real name is Mottamim Abdul Muhit.",
+  "jobTitle": "Internet Pirate & Tinkerer",
+  "nationality": "Bangladeshi",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "BD"
+  },
+  "slogan": "Supremacy.",
+  "knowsAbout": ["Piracy", "Social Media", "Tinkering", "Internet Culture", "Gaming", "Anime", "Music"],
+  "sameAs": socials.map((s) => s.link),
+});
+
 const html = `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SupremeMuhit</title>
+    <title>SupremeMuhit — Supreme Muhit (Mottamim Abdul Muhit) | Pirate, Tinkerer, Social Media Explorer</title>
+    <meta name="description" content="Supreme Muhit (Mottamim Abdul Muhit), also known as The Supreme. Professional internet pirate and tinkerer who loves piracy and lives on social media. Explore my world, projects and socials." />
+    <meta name="keywords" content="SupremeMuhit, Supreme Muhit, Mottamim Abdul Muhit, The Supreme, developer, programmer, portfolio, gamer" />
+    <meta name="author" content="Mottamim Abdul Muhit" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="${siteUrl}" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="SupremeMuhit — Supreme Muhit (Mottamim Abdul Muhit)" />
+    <meta property="og:description" content="Professional internet pirate and tinkerer. Active on every social, loves piracy and always up to something." />
+    <meta property="og:url" content="${siteUrl}" />
+    <meta property="og:image" content="https://i.imgur.com/e4GxPXm.png" />
+    <meta property="og:site_name" content="Supreme Muhit" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="SupremeMuhit — Supreme Muhit (Mottamim Abdul Muhit)" />
+    <meta name="twitter:description" content="Professional internet pirate and tinkerer." />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+    <script type="application/ld+json">${structuredData}</script>
   </head>
   <body>
     <div class="page">
@@ -103,15 +139,18 @@ const html = `<!doctype html>
           <img src="https://i.imgur.com/e4GxPXm.png" alt="SupremeMuhit" />
         </div>
         <div class="masthead-text">
-          <h1>𝖘𝖚𝖕𝖗𝖊𝖒𝖊𝖒𝖚𝖍𝖎𝖙</h1>
-          <p class="masthead-role">Developer &amp; Tinkerer</p>
-          <p class="masthead-bio">
-            Hey, I'm Supreme. Self-taught developer and tech enthusiast with a
-            passion for building clean, efficient applications. I spend most of my
-            time exploring new technologies, writing code, and tinkering with game
-            mechanics. Find me on
+          <h1 aria-label="Supreme Muhit">𝖘𝖚𝖕𝖗𝖊𝖒𝖊𝖒𝖚𝖍𝖎𝖙</h1>
+          <p class="masthead-role">Pirate &amp; Tinkerer</p>
+<p class="masthead-bio">
+            Hey, I'm Supreme Muhit (also known as Mottamim Abdul Muhit, the
+            Supreme) &mdash; an Internet pirate by passion. I'm skilled at
+            finding anything online and know my way around the web better than
+            most. An active social media user across platforms, and when I'm
+            not online, I'm usually tinkering with something &mdash; modding,
+            exploring, and figuring out how things work. Always open to new
+            things. Find me on
             <a href="https://discord.com/users/1341440502104592507" target="_blank" rel="noopener">Discord</a>
-            &mdash; always open to new ideas.
+            &mdash; let's talk.
           </p>
         </div>
       </header>
@@ -147,7 +186,7 @@ const html = `<!doctype html>
       <hr class="rule" />
 
       <footer class="footer">
-        <p>&copy; ${new Date().getFullYear()} SupremeMuhit</p>
+        <p>&copy; ${new Date().getFullYear()} Supreme Muhit (Mottamim Abdul Muhit)</p>
       </footer>
     </div>
 

@@ -118,5 +118,26 @@ export const socials: Social[] = [
     link: "https://www.threads.com/@suprememuhit",
     icon: "fa-brands fa-threads",
     description: "Meta X Profile",
+  },
+  {
+    title: "AniList",
+    handle: "TheSupreme",
+    link: "https://anilist.co/user/TheSupreme/",
+    icon: "fa-solid fa-tv",
+    description: "Watching too much anime",
+  },
+  {
+    title: "RateYourMusic",
+    handle: "SupremeMuhit",
+    link: "https://rateyourmusic.com/~SupremeMuhit",
+    icon: "fa-solid fa-music",
+    description: "Rate my music taste",
+  },
+  {
+    title: "Backloggd",
+    handle: "SupremeMuhit",
+    link: "https://backloggd.com/u/SupremeMuhit/",
+    icon: "fa-solid fa-bookmark",
+    description: "Games I'll never finish",
   }
 ];
